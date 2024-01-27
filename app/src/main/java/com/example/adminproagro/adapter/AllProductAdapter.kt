@@ -1,37 +1,48 @@
 package com.example.adminproagro.adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.adminproagro.databinding.AllProductBinding
+import com.example.adminproagro.model.AllMenu
+//import com.google.firebase.database.core.Context
+import android.content.Context
+import com.google.firebase.database.DatabaseReference
+
 
 class AllProductAdapter(
-    private val allProductName: MutableList<String>,
-    private val allProductPrices: MutableList<String>,
-    private val allProductImages: MutableList<Int>
+    private val context: Context,
+    private val productList: ArrayList<AllMenu>,
+    databaseReference: DatabaseReference,
+    private val onDeleteClickListner : (position : Int) -> Unit
 ): RecyclerView.Adapter<AllProductAdapter.AllProductViewHolder>() {
 
-    private var productQuantities: MutableList<Int> = Array(allProductName.size) { 1 }.toMutableList()
-
+    private var productQuantities =IntArray(productList.size) { 1 }
+   // private var productQuantities: MutableList<Int> = Array(productList.size) { 1 }.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllProductViewHolder {
         return AllProductViewHolder(AllProductBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
-
-
     override fun onBindViewHolder(holder: AllProductViewHolder, position: Int) {
-        holder.bind(allProductName[position],allProductPrices[position],allProductImages[position])
+        holder.bind(position)
     }
-
-    override fun getItemCount(): Int=allProductName.size
+    override fun getItemCount(): Int=productList.size
 
     inner class AllProductViewHolder(private val binding: AllProductBinding):RecyclerView.ViewHolder(binding.root) {
-        fun bind(name: String, price: String, img: Int) {
+        fun bind(position: Int) {
            binding.apply{
-               allProductName.text=name
-               allProductPrice.text=price
-               allProductImg.setImageResource(img)
+
+               val productItem: AllMenu=productList[position]
+               val uriString : String? = productItem.productImage
+               val uri: Uri = Uri.parse(uriString)
+               allProductName.text=productItem.productName
+               allProductPrice.text=productItem.productPrice
+               Glide.with(context).load(uri).into(allProductImg)
+
+               allProductQuantityTv.text= productItem.productQuantity.toString()
            }
 
             binding.allProductImgbtnAdd.setOnClickListener{
@@ -41,7 +52,7 @@ class AllProductAdapter(
                 decreaseQuantity(position)
             }
             binding.allProductImgbtnDelete.setOnClickListener{
-                delete(position)
+                onDeleteClickListner(position)
             }
         }
 
@@ -63,11 +74,11 @@ class AllProductAdapter(
 
         //Method for delete quantity
         fun delete(position: Int) {
-            allProductName.removeAt(position)
-            allProductPrices.removeAt(position)
-            allProductImages.removeAt(position)
-            productQuantities.removeAt(position)
-            notifyDataSetChanged()
+            productList.removeAt(position)
+            productList.removeAt(position)
+            productList.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position,productList.size)
         }
 
 

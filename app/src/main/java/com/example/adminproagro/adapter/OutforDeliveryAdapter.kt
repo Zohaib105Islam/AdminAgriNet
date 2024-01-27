@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.adminproagro.databinding.OutForDeliveryBinding
 
 class OutforDeliveryAdapter(
-    private val customerNames:ArrayList<String>,
-    private val moneyStatus:ArrayList<String>
+    private val customerNames:MutableList<String>,
+    private val moneyStatus:MutableList<Boolean>
 ) : RecyclerView.Adapter<OutforDeliveryAdapter.OutforDeliveryViewHolder>()
 {
 
@@ -31,10 +31,15 @@ class OutforDeliveryAdapter(
 
             binding.apply {
                 custmrName.text=customerNames[position]
-                statusMoney.text=moneyStatus[position]
+
+                if(moneyStatus[position] == true){
+                    statusMoney.text="Received"
+                }else{
+                    statusMoney.text="Not Received"
+                }
 
                 val colorMap= mapOf(
-                    "Received" to Color.GREEN,"Not Received" to Color.RED,"Pending" to Color.GRAY
+                    true to Color.GREEN,false to Color.RED,
                 )
                 statusMoney.setTextColor(colorMap[moneyStatus[position]] ?: Color.BLACK)
                 statusColor.backgroundTintList= ColorStateList.valueOf(colorMap[moneyStatus[position]] ?: Color.BLACK)

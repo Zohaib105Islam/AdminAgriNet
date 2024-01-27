@@ -284,6 +284,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/logOut"
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"
@@ -325,8 +326,7 @@
                     android:src="@drawable/logout"
                     app:layout_constraintEnd_toEndOf="@+id/logout_tv"
                     app:layout_constraintStart_toStartOf="@+id/logout_tv"
-                    app:layout_constraintTop_toTopOf="parent"
-                     />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
@@ -370,13 +370,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/wholeTimeEarning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/lato"
-                android:text="100$"
                 android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -414,12 +413,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/completedOrders"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="10"
                 android:textColor="@color/yellow"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -467,12 +465,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/pendingOrders"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="30"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

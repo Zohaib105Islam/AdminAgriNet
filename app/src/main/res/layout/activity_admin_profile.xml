@@ -45,7 +45,6 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:ems="10"
-                android:text="Rao Zohaib Islam"
                 android:inputType="text"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -79,7 +78,6 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:ems="10"
-                android:text="Chak no 105/wb Vehari"
                 android:inputType="textMultiLine"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -113,7 +111,6 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:ems="10"
-                android:text="zohaibrao105@gmail.com"
                 android:inputType="textEmailAddress"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -147,7 +144,6 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:ems="10"
-                android:text="03090486206"
                 android:inputType="number"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -181,7 +177,6 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:ems="10"
-                android:text="123456"
                 android:inputType="textPassword"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -189,7 +184,7 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
+        android:id="@+id/saveInfoBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
